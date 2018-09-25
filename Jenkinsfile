@@ -2,7 +2,7 @@ pipeline {
     agent {
         node {
             label 'ridon-7.1.2'
-            customWorkspace '/home/ridon/workspace/'
+            //customWorkspace '/home/ridon/workspace/'
         }
     }
 
@@ -10,7 +10,8 @@ pipeline {
         stage('build') {
             agent {
                 docker {
-                    image 'android-build'
+                    image 'samsulmaarif/ridon-builder'
+                    args '-v /tmp/ridon:/ridon/ '
                 }
             }
             environment {

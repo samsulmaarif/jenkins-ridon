@@ -43,5 +43,9 @@ RUN apt-get update && apt-get -y --no-install-recommends install \
 ADD https://commondatastorage.googleapis.com/git-repo-downloads/repo /usr/local/bin/
 RUN chmod 755 /usr/local/bin/*
 
+RUN useradd -d /ridon -ms /bin/bash -g root -G sudo -p ridon ridon
+USER ridon
+WORKDIR /ridon/
+
 VOLUME /ridon/
 VOLUME /ccache/
